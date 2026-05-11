@@ -74,7 +74,7 @@ export function ARViewer({ item, onBack, onAddToCart }: ARViewerProps) {
               </div>
               <div className="text-white space-y-2">
                 <p className="text-lg font-medium">Detectando superficie...</p>
-                <p className="text-sm text-white/70">Apunta tu cámara hacia una mesa</p>
+                <p className="text-sm text-white/70">Apunta tu cámara hacia uma mesa</p>
               </div>
             </div>
           ) : (
@@ -87,16 +87,16 @@ export function ARViewer({ item, onBack, onAddToCart }: ARViewerProps) {
                   transition: "transform 0.3s ease",
                 }}
               >
-                <Card className="w-80 h-80 bg-white/90 backdrop-blur-sm shadow-2xl">
+                <Card className="w-80 h-80 bg-white/95 backdrop-blur-md shadow-2xl rounded-3xl border-0">
                   <CardContent className="p-6 h-full flex flex-col items-center justify-center">
                     <img
                       src={item.image || "/placeholder.svg"}
                       alt={item.name}
-                      className="w-48 h-48 object-cover rounded-lg shadow-lg"
+                      className="w-48 h-48 object-cover rounded-2xl shadow-lg"
                     />
                     <div className="mt-4 text-center">
-                      <h3 className="font-semibold text-lg">{item.name}</h3>
-                      <p className="text-primary font-bold text-xl">€{item.price.toFixed(2)}</p>
+                      <h3 className="font-semibold text-lg text-foreground">{item.name}</h3>
+                      <p className="text-primary font-bold text-xl">R${item.price.toFixed(2)}</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -117,29 +117,29 @@ export function ARViewer({ item, onBack, onAddToCart }: ARViewerProps) {
         {!isLoading && (
           <>
             {/* AR Controls */}
-            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 space-y-2">
-              <Button variant="secondary" size="sm" onClick={handleRotate} className="w-12 h-12 rounded-full">
-                <RotateCcw className="h-4 w-4" />
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 space-y-3">
+              <Button variant="secondary" size="sm" onClick={handleRotate} className="w-12 h-12 rounded-2xl shadow-lg bg-white/90 backdrop-blur-sm hover:bg-white">
+                <RotateCcw className="h-4 w-4 text-foreground" />
               </Button>
-              <Button variant="secondary" size="sm" onClick={handleZoomIn} className="w-12 h-12 rounded-full">
-                <ZoomIn className="h-4 w-4" />
+              <Button variant="secondary" size="sm" onClick={handleZoomIn} className="w-12 h-12 rounded-2xl shadow-lg bg-white/90 backdrop-blur-sm hover:bg-white">
+                <ZoomIn className="h-4 w-4 text-foreground" />
               </Button>
-              <Button variant="secondary" size="sm" onClick={handleZoomOut} className="w-12 h-12 rounded-full">
-                <ZoomOut className="h-4 w-4" />
+              <Button variant="secondary" size="sm" onClick={handleZoomOut} className="w-12 h-12 rounded-2xl shadow-lg bg-white/90 backdrop-blur-sm hover:bg-white">
+                <ZoomOut className="h-4 w-4 text-foreground" />
               </Button>
             </div>
 
             {/* Bottom Actions */}
             <div className="absolute bottom-0 left-0 right-0 p-4">
-              <Card className="bg-white/90 backdrop-blur-sm">
-                <CardContent className="p-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="font-semibold">{item.name}</h3>
-                      <p className="text-sm text-muted-foreground">{item.description}</p>
-                      <p className="text-lg font-bold text-primary mt-1">€{item.price.toFixed(2)}</p>
+              <Card className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border-0">
+                <CardContent className="p-5">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-foreground">{item.name}</h3>
+                      <p className="text-sm text-muted-foreground line-clamp-2">{item.description}</p>
+                      <p className="text-lg font-bold text-primary mt-1">R${item.price.toFixed(2)}</p>
                     </div>
-                    <Button onClick={() => onAddToCart(item)}>
+                    <Button onClick={() => onAddToCart(item)} className="rounded-2xl bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg px-6">
                       <Plus className="h-4 w-4 mr-2" />
                       Añadir
                     </Button>
@@ -152,9 +152,9 @@ export function ARViewer({ item, onBack, onAddToCart }: ARViewerProps) {
 
         {/* AR Instructions */}
         <div className="absolute top-20 left-4 right-4">
-          <Card className="bg-black/50 backdrop-blur-sm border-primary/30">
+          <Card className="bg-black/60 backdrop-blur-md border-0 rounded-2xl">
             <CardContent className="p-3">
-              <p className="text-white text-sm text-center">
+              <p className="text-white/90 text-sm text-center">
                 {isLoading
                   ? "Mueve tu dispositivo lentamente para detectar la superficie"
                   : "Usa los controles para rotar y hacer zoom del plato"}

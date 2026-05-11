@@ -24,15 +24,17 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-green-50 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-accent/20 via-background to-secondary/10 flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-md space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
           <div className="flex items-center justify-center space-x-2">
             <Utensils className="h-8 w-8 text-primary" />
-            <h1 className="text-3xl font-bold text-foreground">MenuAR</h1>
+            <h1 className="text-3xl font-bold text-foreground">MenuAR Bahia</h1>
           </div>
-          <p className="text-muted-foreground text-balance">Descubre nuestro menú interactivo con realidad aumentada</p>
+          <p className="text-muted-foreground text-balance">
+            Descubre la auténtica gastronomía bahiana con realidad aumentada
+          </p>
         </div>
 
         {/* QR Scanner Card */}
