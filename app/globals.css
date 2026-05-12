@@ -173,18 +173,58 @@
   --sidebar-ring: oklch(0.70 0.18 55);
 }
 
-/* Dark mode inherits from current theme with adjusted values */
-.dark {
-  --background: oklch(0.14 0 0);
+/* ============================================
+   Theme 4: Noche Tropical (Dark)
+   Elegant Dark Mode - Sophisticated Night
+   ============================================ */
+[data-theme="dark"] {
+  /* Fondo Oscuro Profundo #0D0D0D */
+  --background: oklch(0.13 0.005 260);
   --foreground: oklch(0.95 0.005 85);
-  --card: oklch(0.18 0 0);
+  
+  /* Cards Gris Oscuro #1A1A1A */
+  --card: oklch(0.18 0.005 260);
   --card-foreground: oklch(0.95 0.005 85);
-  --popover: oklch(0.18 0 0);
+  --popover: oklch(0.18 0.005 260);
   --popover-foreground: oklch(0.95 0.005 85);
-  --muted: oklch(0.25 0 0);
-  --muted-foreground: oklch(0.65 0 0);
-  --border: oklch(0.28 0 0);
-  --input: oklch(0.20 0 0);
+
+  /* Dorado Cálido #D4A574 - Primary */
+  --primary: oklch(0.75 0.10 65);
+  --primary-foreground: oklch(0.13 0 0);
+
+  /* Terracota Oscuro #B8704D - Secondary */
+  --secondary: oklch(0.58 0.12 50);
+  --secondary-foreground: oklch(0.95 0 0);
+
+  /* Coral Suave #E8927C - Accent/CTA */
+  --accent: oklch(0.72 0.12 35);
+  --accent-foreground: oklch(0.13 0 0);
+
+  /* Neutrals Oscuros */
+  --muted: oklch(0.22 0.005 260);
+  --muted-foreground: oklch(0.65 0.005 85);
+
+  --destructive: oklch(0.60 0.18 25);
+  --destructive-foreground: oklch(0.95 0 0);
+
+  --border: oklch(0.28 0.005 260);
+  --input: oklch(0.20 0.005 260);
+  --ring: oklch(0.75 0.10 65);
+  
+  --chart-1: oklch(0.75 0.10 65);
+  --chart-2: oklch(0.58 0.12 50);
+  --chart-3: oklch(0.72 0.12 35);
+  --chart-4: oklch(0.65 0.005 85);
+  --chart-5: oklch(0.60 0.18 25);
+  
+  --sidebar: oklch(0.16 0.005 260);
+  --sidebar-foreground: oklch(0.95 0.005 85);
+  --sidebar-primary: oklch(0.75 0.10 65);
+  --sidebar-primary-foreground: oklch(0.13 0 0);
+  --sidebar-accent: oklch(0.72 0.12 35);
+  --sidebar-accent-foreground: oklch(0.13 0 0);
+  --sidebar-border: oklch(0.28 0.005 260);
+  --sidebar-ring: oklch(0.75 0.10 65);
 }
 
 @theme inline {
