@@ -104,8 +104,8 @@ export function ThemeSelector({ currentTheme, onThemeChange }: ThemeSelectorProp
       </Button>
 
       {isOpen && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-end sm:items-center justify-center p-4">
-          <Card className="w-full max-w-md rounded-3xl shadow-2xl border-0 overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <Card className="w-full max-w-md rounded-3xl shadow-2xl border-0 overflow-hidden animate-in fade-in zoom-in-95 duration-300 my-auto">
             {currentView === "main" ? (
               <>
                 <CardHeader className="pb-4 pt-6">
@@ -200,7 +200,7 @@ export function ThemeSelector({ currentTheme, onThemeChange }: ThemeSelectorProp
                     Elige el estilo visual de tu menú
                   </p>
                 </CardHeader>
-                <CardContent className="space-y-3 pb-6 pt-2 max-h-[60vh] overflow-y-auto">
+                <CardContent className="space-y-3 pb-6 pt-2">
                   {themes.map((themeOption) => (
                     <button
                       key={themeOption.id}
