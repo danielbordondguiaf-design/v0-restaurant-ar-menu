@@ -26,10 +26,78 @@ interface LanguageOption {
   flag: string
 }
 
+// Flag components using SVG for consistent rendering
+function ArgentinaFlag({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="24" rx="2" fill="#74ACDF"/>
+      <rect y="8" width="32" height="8" fill="white"/>
+      <circle cx="16" cy="12" r="3" fill="#F6B40E"/>
+    </svg>
+  )
+}
+
+function BrazilFlag({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="24" rx="2" fill="#009739"/>
+      <path d="M16 3L30 12L16 21L2 12L16 3Z" fill="#FEDD00"/>
+      <circle cx="16" cy="12" r="5" fill="#002776"/>
+      <path d="M11 12C11 12 13 14 16 14C19 14 21 12 21 12" stroke="white" strokeWidth="0.5"/>
+    </svg>
+  )
+}
+
+function USAFlag({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="24" rx="2" fill="#B22234"/>
+      <rect y="1.85" width="32" height="1.85" fill="white"/>
+      <rect y="5.54" width="32" height="1.85" fill="white"/>
+      <rect y="9.23" width="32" height="1.85" fill="white"/>
+      <rect y="12.92" width="32" height="1.85" fill="white"/>
+      <rect y="16.61" width="32" height="1.85" fill="white"/>
+      <rect y="20.31" width="32" height="1.85" fill="white"/>
+      <rect width="12.8" height="12.92" fill="#3C3B6E"/>
+      <circle cx="2" cy="1.5" r="0.5" fill="white"/>
+      <circle cx="4.5" cy="1.5" r="0.5" fill="white"/>
+      <circle cx="7" cy="1.5" r="0.5" fill="white"/>
+      <circle cx="9.5" cy="1.5" r="0.5" fill="white"/>
+      <circle cx="3.25" cy="3" r="0.5" fill="white"/>
+      <circle cx="5.75" cy="3" r="0.5" fill="white"/>
+      <circle cx="8.25" cy="3" r="0.5" fill="white"/>
+      <circle cx="2" cy="4.5" r="0.5" fill="white"/>
+      <circle cx="4.5" cy="4.5" r="0.5" fill="white"/>
+      <circle cx="7" cy="4.5" r="0.5" fill="white"/>
+      <circle cx="9.5" cy="4.5" r="0.5" fill="white"/>
+      <circle cx="3.25" cy="6" r="0.5" fill="white"/>
+      <circle cx="5.75" cy="6" r="0.5" fill="white"/>
+      <circle cx="8.25" cy="6" r="0.5" fill="white"/>
+      <circle cx="2" cy="7.5" r="0.5" fill="white"/>
+      <circle cx="4.5" cy="7.5" r="0.5" fill="white"/>
+      <circle cx="7" cy="7.5" r="0.5" fill="white"/>
+      <circle cx="9.5" cy="7.5" r="0.5" fill="white"/>
+      <circle cx="3.25" cy="9" r="0.5" fill="white"/>
+      <circle cx="5.75" cy="9" r="0.5" fill="white"/>
+      <circle cx="8.25" cy="9" r="0.5" fill="white"/>
+      <circle cx="2" cy="10.5" r="0.5" fill="white"/>
+      <circle cx="4.5" cy="10.5" r="0.5" fill="white"/>
+      <circle cx="7" cy="10.5" r="0.5" fill="white"/>
+      <circle cx="9.5" cy="10.5" r="0.5" fill="white"/>
+    </svg>
+  )
+}
+
+const FlagComponents: Record<LanguageCode, React.FC<{ className?: string }>> = {
+  es: ArgentinaFlag,
+  pt: BrazilFlag,
+  en: USAFlag,
+}
+
 const languages: LanguageOption[] = [
-  { id: "es", name: "Español", flag: "🇦🇷" },
-  { id: "pt", name: "Português", flag: "🇧🇷" },
-  { id: "en", name: "English", flag: "🇺🇸" },
+  { id: "es", name: "Español", flag: "AR" },
+  { id: "pt", name: "Português", flag: "BR" },
+  { id: "en", name: "English", flag: "US" },
 ]
 
 const themes: ThemeOption[] = [
@@ -375,7 +443,12 @@ export function ThemeSelector({ currentTheme, onThemeChange }: ThemeSelectorProp
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-lg">{currentLanguageData?.flag}</span>
+                        {currentLanguageData && FlagComponents[currentLanguageData.id] && (
+                          (() => {
+                            const FlagComponent = FlagComponents[currentLanguageData.id]
+                            return <FlagComponent className="w-6 h-4 rounded-sm" />
+                          })()
+                        )}
                         <ChevronRight className="h-4 w-4 text-muted-foreground" />
                       </div>
                     </div>
@@ -498,7 +571,10 @@ export function ThemeSelector({ currentTheme, onThemeChange }: ThemeSelectorProp
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <span className="text-2xl">{langOption.flag}</span>
+                          {(() => {
+                            const FlagComponent = FlagComponents[langOption.id]
+                            return <FlagComponent className="w-8 h-6 rounded-sm shadow-sm" />
+                          })()}
                           <span className="font-medium">{langOption.name}</span>
                         </div>
                         {language === langOption.id && (
