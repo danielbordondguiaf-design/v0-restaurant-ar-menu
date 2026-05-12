@@ -104,8 +104,15 @@ export function ThemeSelector({ currentTheme, onThemeChange }: ThemeSelectorProp
       </Button>
 
       {isOpen && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <Card className="w-full max-w-md rounded-3xl shadow-2xl border-0 overflow-hidden animate-in fade-in zoom-in-95 duration-300 my-auto">
+        <div 
+          className="fixed inset-0 bg-black/50 z-50" 
+          onClick={handleClose}
+        >
+          <div className="min-h-full flex items-center justify-center p-6">
+            <Card 
+              className="w-full max-w-md rounded-3xl shadow-2xl border-0 bg-card animate-in fade-in zoom-in-95 duration-300"
+              onClick={(e) => e.stopPropagation()}
+            >
             {currentView === "main" ? (
               <>
                 <CardHeader className="pb-4 pt-6">
@@ -239,7 +246,8 @@ export function ThemeSelector({ currentTheme, onThemeChange }: ThemeSelectorProp
                 </CardContent>
               </>
             )}
-          </Card>
+            </Card>
+          </div>
         </div>
       )}
     </>
