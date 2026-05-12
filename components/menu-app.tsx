@@ -289,11 +289,11 @@ export function MenuApp() {
       {/* Menu Items */}
       <div className="p-4 space-y-4">
         {filteredItems.map((item) => (
-          <Card key={item.id} className="overflow-hidden rounded-2xl border-0 shadow-md">
-            <CardContent className="p-0">
-              <div className="flex">
-                <img src={item.image || "/placeholder.svg"} alt={item.name} className="w-28 h-28 object-cover" />
-                <div className="flex-1 p-4 space-y-2">
+          <Card key={item.id} className="rounded-2xl border-0 shadow-md">
+            <CardContent className="p-3">
+              <div className="flex gap-3">
+                <img src={item.image || "/placeholder.svg"} alt={item.name} className="w-24 h-24 rounded-xl object-cover flex-shrink-0" />
+                <div className="flex-1 space-y-2">
                   <div className="flex items-start justify-between">
                     <div className="space-y-1">
                       <h3 className="font-semibold text-foreground text-balance">{item.name}</h3>
