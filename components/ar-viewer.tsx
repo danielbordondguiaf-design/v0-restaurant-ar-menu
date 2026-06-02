@@ -5,11 +5,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Plus, Box } from "lucide-react"
 import Script from "next/script"
+import { useLanguage, type LanguageCode } from "@/components/theme-selector"
 
 interface MenuItem {
   id: string
   name: string
-  description: string
+  description: Record<LanguageCode, string>
   price: number
   image: string
   category: string
@@ -34,6 +35,7 @@ export function ARViewer({ item, onBack, onAddToCart }: ARViewerProps) {
   const [modelUrl, setModelUrl] = useState<string | null>(null)
   const [scriptLoaded, setScriptLoaded] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const { language, t } = useLanguage()
 
   // Fetch model URL from Blob storage
   useEffect(() => {
@@ -89,7 +91,7 @@ export function ARViewer({ item, onBack, onAddToCart }: ARViewerProps) {
           <div className="flex items-center justify-between text-white">
             <Button variant="ghost" size="sm" onClick={onBack} className="text-white hover:bg-white/20">
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Volver
+              {t("back")}
             </Button>
             <h1 className="text-lg font-semibold">Vista AR</h1>
             <div className="w-16" />
@@ -198,12 +200,12 @@ export function ARViewer({ item, onBack, onAddToCart }: ARViewerProps) {
               <div className="flex items-center justify-between gap-4">
                 <div className="flex-1">
                   <h3 className="font-semibold text-foreground">{item.name}</h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2">{item.description}</p>
+                  <p className="text-sm text-muted-foreground line-clamp-2">{item.description[language]}</p>
                   <p className="text-lg font-bold text-primary mt-1">R${item.price.toFixed(2)}</p>
                 </div>
                 <Button onClick={() => onAddToCart(item)} className="rounded-2xl bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg px-6">
                   <Plus className="h-4 w-4 mr-2" />
-                  Anadir
+                  {t("add")}
                 </Button>
               </div>
             </CardContent>
