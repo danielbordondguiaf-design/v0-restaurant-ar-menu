@@ -17,6 +17,7 @@ interface MenuItem {
   image: string
   category: string
   rating: number
+  model3D?: string
 }
 
 interface CartItem extends MenuItem {
@@ -36,6 +37,7 @@ const menuItems: MenuItem[] = [
     image: "/moqueca-fish-stew-coconut-milk.jpg",
     category: "mainCourses",
     rating: 4.9,
+    model3D: "fast-food.glb",
   },
   {
     id: "2",
@@ -49,6 +51,7 @@ const menuItems: MenuItem[] = [
     image: "/acaraje-fried-bean-ball-shrimp.jpg",
     category: "starters",
     rating: 4.8,
+    model3D: "sushi_boat_nigiri.glb",
   },
   {
     id: "3",
